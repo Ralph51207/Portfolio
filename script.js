@@ -167,3 +167,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const skillsSection = document.querySelector("#skills");
   if (skillsSection) observer.observe(skillsSection);
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const skillsSection = document.querySelector("#skills");
+  const bars = skillsSection.querySelectorAll(".chart-bar");
+
+  skillsSection.addEventListener("click", () => {
+    bars.forEach(bar => {
+      // reset
+      bar.classList.remove("filled");
+      bar.style.width = "0";
+
+      // animate to each bar's own data-width
+      setTimeout(() => {
+        bar.style.width = bar.dataset.width;
+        bar.classList.add("filled");
+      }, 200);
+    });
+  });
+});

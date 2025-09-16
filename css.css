@@ -184,19 +184,39 @@ footer {
     color: #c6f3ff;
     font-weight: 500;
 }
+
 .chart-bar {
   display: inline-block;
   vertical-align: middle;
   height: 18px;
   min-width: 40px;
   max-width: 350px;
-  width: 0;  
+  width: 0;  /* start empty */
   background: linear-gradient(90deg, #aaf3ff 0%, #5ee7ff 60%, #1ec8e7 100%);
   border-radius: 9px;
   transition: width 1.2s cubic-bezier(.4,2,.3,1);
   box-shadow: 0 2px 8px rgba(30,200,231,0.18), 0 0 8px #aaf3ff inset;
   margin-left: 1rem;
+  position: relative;
 }
+
+.chart-bar::after {
+  content: attr(data-width);
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0d1a1f;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.chart-bar.filled::after {
+  opacity: 1;
+}
+
 .skills-wrapper {
   background: linear-gradient(135deg, #1d2433 0%, #1a3442 100%);
   border-radius: 16px;
