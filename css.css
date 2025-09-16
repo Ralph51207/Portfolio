@@ -495,7 +495,7 @@ header img { animation-delay: 0.9s; }
 #hobbies.container{
     max-width: 900px;
     margin: 2rem auto;
-    background: #363941;   
+    background: #23272f;   
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 2px 16px rgba(0,0,0,0.25);
@@ -538,4 +538,40 @@ header img { animation-delay: 0.9s; }
   object-fit: contain;
   margin-bottom: 0.75rem;   
   filter: drop-shadow(0 3px 8px rgba(0,0,0,0.35));
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.achievements-list li {
+  background: linear-gradient(135deg, #081c3d 40%, #6cd4e4 100%);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  border: 2px solid #2f3a3b;
+  box-shadow: 0 4px 14px rgba(94,231,255,0.18);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.achievements-list li:hover {
+  transform: translateY(-4px);
+  border-color: #5ee7ff;
+  box-shadow: 0 6px 20px rgba(94,231,255,0.35);
+}
+
+.achievements-list h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: #b6edfc;
+}
+
+.achievements-list p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e4e6eb;
 }
