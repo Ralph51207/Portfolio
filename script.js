@@ -151,3 +151,19 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bars = entry.target.querySelectorAll(".chart-bar");
+        bars.forEach(bar => {
+          bar.style.width = bar.dataset.width; 
+        });
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const skillsSection = document.querySelector("#skills");
+  if (skillsSection) observer.observe(skillsSection);
+});
