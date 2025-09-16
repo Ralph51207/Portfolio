@@ -1,87 +1,153 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scroll for nav anchors
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href').slice(1);
-            const target = document.getElementById(targetId);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+     const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  if (isTouch) {
+    document.body.classList.add('touch');
+  } else {
+    document.body.classList.add('no-touch');
+  }
+
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  
+  const revealTargets = document.querySelectorAll('section, .projects li, .education-item');
+  if ('IntersectionObserver' in window && revealTargets.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealTargets.forEach(t => revealObserver.observe(t));
+  } else {
+    revealTargets.forEach(t => t.classList.add('visible'));
+  }
+
+
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+  if ('IntersectionObserver' in window && sections.length) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => navObserver.observe(s));
+  }
+
+  
+  const skillsSection = document.getElementById('skills');
+  const skillBars = document.querySelectorAll('.skill-chart .chart-bar');
+  if (skillsSection && skillBars.length) {
+    if ('IntersectionObserver' in window) {
+      const skillObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            skillBars.forEach(bar => {
+              const percent = bar.getAttribute('data-percent') || '0';
+              bar.style.width = percent + '%';
+            });
+            obs.unobserve(entry.target);
+          }
         });
+      }, { threshold: 0.2 });
+      skillObs.observe(skillsSection);
+    } else {
+      skillBars.forEach(bar => bar.style.width = (bar.getAttribute('data-percent') || '0') + '%');
+    }
+  }
+
+  // --- Project map toggle (mobile only) ---
+  const projectItems = document.querySelectorAll('.project-item');
+  if (isTouch && projectItems.length) {
+    projectItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+       
+        if (e.target.closest('a')) return;
+
+        
+        projectItems.forEach(other => {
+          if (other !== item) other.classList.remove('open');
+        });
+
+        
+        item.classList.toggle('open');
+      });
     });
 
-    // Reveal on scroll
-    const sections = document.querySelectorAll('section');
-    const revealItems = document.querySelectorAll('.projects li, .education-item');
+  
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.project-item')) {
+        projectItems.forEach(item => item.classList.remove('open'));
+      }
+    });
+  }
 
-    function revealOnScroll() {
-        [...sections, ...revealItems].forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 80) {
-                el.classList.add('visible');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
-    // Nav link active state while scrolling
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 80;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
+  
+  const contactSection = document.getElementById('contact');
+  if (isTouch && contactSection) {
+    contactSection.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      contactSection.classList.toggle('open');
     });
 
-    // Animate skill bars when skills section becomes visible
-    const skillsSection = document.getElementById('skills');
-    const skillCharts = document.querySelectorAll('.skill-chart .chart-bar');
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#contact')) {
+        contactSection.classList.remove('open');
+      }
+    });
+  }
+});
 
-    function animateCharts() {
-        if (!skillsSection.classList.contains('visible')) return;
-        skillCharts.forEach(bar => {
-            const percent = bar.getAttribute('data-percent');
-            bar.style.width = percent + '%';
-        });
-    }
+const canvas = document.getElementById("bg-animation");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    window.addEventListener('scroll', animateCharts);
-    animateCharts();
+let particles = [];
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
+  });
+}
 
-    // Touch devices: fallback to tap to toggle open (because hover doesn't exist)
-    const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-    if (isTouch) {
-        document.querySelectorAll('.project-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                // prevent the click from following external links inside the project-content immediately
-                const anchor = e.target.closest('a');
-                if (anchor) {
-                    // Let anchor clicks navigate - do nothing special
-                    return;
-                }
-                item.classList.toggle('open');
-            });
-        });
-        // optional: close other open items when opening a new one
-        document.querySelectorAll('.project-item').forEach(item => {
-            item.addEventListener('click', () => {
-                if (!item.classList.contains('open')) return;
-                document.querySelectorAll('.project-item').forEach(other => {
-                    if (other !== item) other.classList.remove('open');
-                });
-            });
-        });
-    }
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(33, 129, 146, 0.58)";
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
