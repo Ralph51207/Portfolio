@@ -20,6 +20,12 @@ Key highlights include:
 
 ---
 
+## Open The Website on Vercel
+
+https://portfolio-gamma-bay-95.vercel.app/
+
+---
+
 ## 📂 Repository Structure
 .
 ├── index.html          # Main portfolio page
@@ -75,6 +81,7 @@ This project was developed to:
  📞 Contact
 
 For inquiries, please use the contact form within the portfolio or connect through the provided social media links.  
+
 
 
 
