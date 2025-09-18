@@ -77,3 +77,4 @@ This project was developed to:
 For inquiries, please use the contact form within the portfolio or connect through the provided social media links.  
 
 
+
