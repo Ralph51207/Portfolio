@@ -38,12 +38,12 @@ To view or edit the portfolio locally:
 
 1. Clone the repository
    
-   git clone https://github.com/<Ralph51207>/<Portfolio>.git
+   git clone https://github.com/Ralph51207/Portfolio.git
    
 
 2. Navigate to the project directory
   
-   cd <Portfolio>
+   cd Portfolio
    
 
 3. Open the portfolio in a web browser  
@@ -75,6 +75,7 @@ This project was developed to:
  📞 Contact
 
 For inquiries, please use the contact form within the portfolio or connect through the provided social media links.  
+
 
 
 
