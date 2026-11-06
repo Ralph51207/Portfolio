@@ -81,6 +81,7 @@ const projects = {
 const container = document.querySelector('#project-content');
 const project = projects[new URLSearchParams(window.location.search).get('id')];
 const year = document.querySelector('#year');
+document.documentElement.classList.add('motion-enabled');
 
 if (year) year.textContent = String(new Date().getFullYear());
 
@@ -121,4 +122,25 @@ if (container && project) {
     <h1>This project isn’t available.</h1>
     <p class="project-description">Choose a project from the portfolio to see its details.</p>
     <a class="return-link" href="index.html#projects">← Back to all projects</a>`;
+}
+
+const motionTargets = document.querySelectorAll(
+  '.project-intro, .gallery-item, .gallery-placeholder, .project-overview, .return-link'
+);
+
+if ('IntersectionObserver' in window) {
+  const motionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -24px 0px' });
+
+  motionTargets.forEach((target, index) => {
+    target.classList.add('reveal-on-scroll');
+    target.style.setProperty('--reveal-delay', `${(index % 3) * 90}ms`);
+    motionObserver.observe(target);
+  });
 }

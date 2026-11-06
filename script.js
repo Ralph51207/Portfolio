@@ -1,4 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.classList.add('motion-enabled');
+
+  const revealTargets = document.querySelectorAll(
+    '.section-heading, .about-copy, .about-facts, .timeline-card, .project-card, .skills-layout, .beyond-copy, .interest-list, .contact-panel'
+  );
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    revealTargets.forEach((target, index) => {
+      target.classList.add('reveal-on-scroll');
+      target.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 75}ms`);
+      revealObserver.observe(target);
+    });
+  }
+
   const menuButton = document.querySelector('.menu-toggle');
   const navigation = document.querySelector('#primary-nav');
 
