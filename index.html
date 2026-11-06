@@ -1,230 +1,135 @@
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ralph's Portfolio</title>
-    <link rel="stylesheet" href="css.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1118">
+  <meta name="description" content="Portfolio of Ralph Martin Chua, Computer Science student at West Visayas State University.">
+  <title>Ralph Martin Chua | Computer Science Student & Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css.css">
 </head>
-<canvas id="bg-animation"></canvas>
 <body>
-   <header>
-    <img src="Portfolio/profilepicture.png" alt="Ralph Martin Profile" class="profile-img">
-</div>
-    <h1>RALPH MARTIN D. CHUA</h1>
-    <p>CICT-STUDENT</p>
-    <p>BS COMPUTER SCIENCE</p>
-   </header>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ralph Chua home"><span class="brand-mark">RC</span><span>Ralph Chua</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+    <nav id="primary-nav" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a class="nav-resume" href="resume.html">Resume <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </nav>
+  </header>
 
-  <nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-  <a href="resume.html">Resume</a> 
-  </nav>
-
-   <div class="container">
-     <section id="about" class="about">
-       <span class="section-title">About Me</span>
-       <div class="about-flex">
-         <div class="about-text">
-           <p>Hi! I'm Ralph Martin, a passionate CICT student and Business Owner at the same time. I love creating beautiful, user-friendly websites and applications. With a strong background in HTML, CSS, JavaScript, and modern frameworks, I strive to deliver high-quality digital experiences.</p>
-           <ul class="about-details">
-             <li><strong>Birthday:</strong> Feb 8, 2004</li>
-             <li><strong>Age:</strong> 21</li>
-             <li><strong>Gender:</strong> M</li>
-             <li><strong>Address:</strong> 6 Lopez Jaena St., Jaro, Iloilo City, 5000</li>
-           </ul>
-         </div>
-         <div class="about-photo-frame">
-           <img src="Portfolio/profilepicture2.png" alt="Your Photo" class="about-photo">
-         </div>
-       </div>
-     </section>
-
-     <section id="education">
-       <span class="section-title">Education</span>
-       <div class="education-list">
-         <div class="education-item">
-           <strong>Hua Siong College of Iloilo</strong>
-           <p>Nursery to Senior High School</p>
-           <p><em>2006 - 2023</em></p>
-         </div>
-         <div class="education-item">
-           <strong>West Visayas State University</strong>
-           <p>Currently enrolled - 3rd Year (CICT)</p>
-           <p><em>2023 - Present</em></p>
-         </div>
-       </div>
-     </section>
-
-     <section id="projects">
-       <span class="section-title">Projects</span>
-       <ul class="projects">
-         <li>
-           <img src="Icon/web.png" alt="Portfolio Website Logo" class="project-icon">
-           <strong>Portfolio Website</strong> - A personal website to showcase my work and skills.
-         </li>
-
-         <li>
-           <img src="Icon/3.png" alt="Task Manager Logo" class="project-icon">
-           <strong>Task Manager App</strong> - A productivity tracker app.
-         </li>
-
-         <li class="project-item">
-           <img src="Icon/1.png" alt="Black Pig Logo" class="project-icon">
-           <div class="project-content">
-             <strong>
-               <a href="https://www.facebook.com/BlackPigSamgyupsal" target="_blank" style="color:#7fdcf7;text-decoration:underline;">
-                 Black Pig Samgyupsal
-               </a>
-             </strong>
-             - A Samgyupsal restaurant here in Mandurriao, Iloilo City.
-             <div class="map-container">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.2612404465117!2d122.55100227042502!3d10.714322437002465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee537f72dfaad%3A0x1792c3cdddd6afbd!2sBlackpig%20Samgyupsal!5e0!3m2!1sen!2sph!4v1757922930204!5m2!1sen!2sph" 
-                 allowfullscreen loading="lazy">
-               </iframe>
-             </div>
-           </div>
-         </li>
-
-         <li>
-           <img src="Icon/1.png" alt="Black Pig POS Logo" class="project-icon">
-           <strong>Black Pig POS</strong> - A Samgyupsal focused restaurant POS.
-         </li>
-
-         <li class="project-item">
-           <img src="Icon/2.png" alt="BBQ Guys Logo" class="project-icon">
-           <div class="project-content">
-             <strong>
-               <a href="https://www.facebook.com/profile.php?id=100063903909510" target="_blank" style="color:#7fdcf7;text-decoration:underline;">
-                 The Barbeque Guys
-               </a>
-             </strong>
-             - Another Bbq restaurant here in Jaro, Iloilo City.
-             <div class="map-container">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.151898967764!2d122.55174997408679!3d10.722765060183155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee58540f8c16d%3A0x6af842c8e0a8397d!2sThe%20Barbeque%20Guys!5e0!3m2!1sen!2sph!4v1757931775969!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-                 allowfullscreen loading="lazy">
-               </iframe>
-             </div>
-           </div>
-         </li>
-       </ul>
-     </section>
-
-   <section id="skills" class="container">
-  <h2 class="section-title">Skills</h2>
-
-  <div class="skills-wrapper">
-    <div class="skills-charts">
-      <div class="skill-chart">
-        <span>HTML</span>
-        <div class="chart-bar" data-width="80%"></div>
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> Computer Science Student · Iloilo City, Philippines</p>
+        <h1 id="hero-title">Building useful<br><span>digital experiences.</span></h1>
+        <p class="hero-summary">I’m Ralph Martin Chua, a BS Computer Science student at West Visayas State University with interests in web and mobile development, UI/UX, and graphic design.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <i class="fa-solid fa-arrow-down"></i></a><a class="button button-quiet" href="resume.html">View resume <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        <div class="hero-meta"><span><i class="fa-solid fa-location-dot"></i> Iloilo City, Philippines</span><a href="mailto:chuaralphmartin0208@gmail.com"><i class="fa-regular fa-envelope"></i> Get in touch</a></div>
       </div>
-      <div class="skill-chart">
-        <span>CSS</span>
-        <div class="chart-bar" data-width="80%"></div>
+      <div class="hero-visual">
+        <div class="portrait-frame"><img src="Portfolio/profilepicture.png" alt="Portrait of Ralph Martin Chua"></div>
+        <div class="floating-card"><span class="floating-icon"><i class="fa-solid fa-code"></i></span><span><strong>Curious by nature</strong><small>Learning through building</small></span></div>
+        <span class="visual-ring ring-one"></span><span class="visual-ring ring-two"></span>
       </div>
-      <div class="skill-chart">
-        <span>JavaScript</span>
-        <div class="chart-bar" data-width="50%"></div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to about section"><span></span>Scroll to explore</a>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-heading"><p class="eyebrow">01 / About</p><h2>A thoughtful approach<br>to making things work.</h2></div>
+      <div class="about-layout">
+        <div class="about-copy"><p class="lead">I’m a motivated Computer Science student who enjoys turning ideas into clean, friendly digital experiences.</p><p>My interests span frontend and web development, mobile app development, and visual design. I bring curiosity, clear communication, and a collaborative mindset to each project, and I’m always looking for opportunities to learn and contribute.</p><a class="text-link" href="resume.html">More about my background <i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="about-facts"><div><span class="fact-label">Based in</span><strong>Jaro, Iloilo City</strong></div><div><span class="fact-label">Studying</span><strong>BS Computer Science</strong></div><div><span class="fact-label">University</span><strong>West Visayas State University</strong></div><div><span class="fact-label">Focus areas</span><strong>Web · Mobile · UI/UX</strong></div></div>
       </div>
-      <div class="skill-chart">
-        <span>Python</span>
-        <div class="chart-bar" data-width="65%"></div>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="section-heading"><p class="eyebrow">02 / Experience & Education</p><h2>Learning in the classroom<br>and on the job.</h2></div>
+      <div class="timeline-grid">
+        <div class="timeline-column"><h3 class="column-title">Work experience</h3>
+          <article class="timeline-card"><span class="timeline-date">May 2023 — Nov 2023</span><h3>Data Encoder</h3><p class="organization">Black Pig Samgyupsal</p><ul><li>Created and updated accurate records.</li><li>Sorted correspondence and supported day-to-day office coordination.</li><li>Helped schedule meetings and appointments.</li></ul></article>
+          <article class="timeline-card"><span class="timeline-date">Dec 2023 — Dec 2024</span><h3>Operations Manager</h3><p class="organization">Black Pig Samgyupsal</p><ul><li>Supported the team with daily restaurant operations.</li><li>Managed inventory, sales, and store operations.</li><li>Maintained accurate operational records.</li></ul></article>
+        </div>
+        <div class="timeline-column"><h3 class="column-title">Education</h3>
+          <article class="timeline-card education-card"><span class="timeline-date">2023 — 2027</span><h3>Bachelor of Science in Computer Science</h3><p class="organization">West Visayas State University</p><p>Current undergraduate studies in computer science.</p></article>
+          <article class="timeline-card education-card"><span class="timeline-date">2006 — 2023</span><h3>STEM Strand</h3><p class="organization">Hua Siong College of Iloilo</p><p>Completed senior high school in the Science, Technology, Engineering, and Mathematics strand.</p></article>
+        </div>
       </div>
-      <div class="skill-chart">
-        <span>SQL</span>
-        <div class="chart-bar" data-width="60%"></div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+      <div class="section-heading section-heading-row"><div><p class="eyebrow">03 / Selected work</p><h2>Projects rooted in<br>real needs.</h2></div><p class="section-intro">A mix of personal builds, business tools, and local ventures connected to my work and interests.</p></div>
+      <div class="project-grid">
+        <article class="project-card project-featured">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-utensils"></i></span><span class="project-type">Business · Operations</span></div>
+          <h3><a href="project.html?id=black-pig" target="_blank" rel="noreferrer">Black Pig Samgyupsal</a></h3>
+          <p>A local samgyupsal restaurant in Mandurriao, Iloilo City, where I gained hands-on experience in data entry and operations.</p>
+          <a class="project-detail-link" href="project.html?id=black-pig" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a class="project-link" href="https://www.facebook.com/BlackPigSamgyupsal" target="_blank" rel="noreferrer">Visit Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <details class="map-details"><summary>View location</summary><div class="map-container"><iframe title="Map showing Black Pig Samgyupsal in Iloilo City" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.2612404465117!2d122.55100227042502!3d10.714322437002465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee537f72dfaad%3A0x1792c3cdddd6afbd!2sBlackpig%20Samgyupsal!5e0!3m2!1sen!2sph!4v1757922930204!5m2!1sen!2sph" loading="lazy" allowfullscreen></iframe></div></details>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-cash-register"></i></span><span class="project-type">Restaurant software</span></div>
+          <h3><a href="project.html?id=smartposrestu" target="_blank" rel="noreferrer">SmartPOSRestu</a></h3>
+          <p>A point-of-sale project for restaurant service and order management.</p>
+          <a class="project-detail-link" href="project.html?id=smartposrestu" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-boxes-stacked"></i></span><span class="project-type">Inventory management</span></div>
+          <h3><a href="project.html?id=ice-cream-inventory" target="_blank" rel="noreferrer">Ice Cream Shop Inventory</a></h3>
+          <p>An inventory project for tracking stock and supplies for an ice cream shop.</p>
+          <a class="project-detail-link" href="project.html?id=ice-cream-inventory" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-list-check"></i></span><span class="project-type">Productivity</span></div>
+          <h3><a href="project.html?id=task-manager" target="_blank" rel="noreferrer">Task Manager App</a></h3>
+          <p>A productivity tracker concept for organizing tasks and keeping everyday work moving.</p>
+          <a class="project-detail-link" href="project.html?id=task-manager" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-laptop-code"></i></span><span class="project-type">Web design</span></div>
+          <h3><a href="project.html?id=portfolio" target="_blank" rel="noreferrer">Personal Portfolio</a></h3>
+          <p>A responsive portfolio that brings together my background, experience, skills, and work in one place.</p>
+          <a class="project-detail-link" href="project.html?id=portfolio" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </article>
+        <article class="project-card project-wide">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-fire"></i></span><span class="project-type">Local business</span></div>
+          <div><h3><a href="project.html?id=barbeque-guys" target="_blank" rel="noreferrer">The Barbeque Guys</a></h3><p>A barbecue restaurant in Jaro, Iloilo City.</p><a class="project-detail-link" href="project.html?id=barbeque-guys" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a><a class="project-link" href="https://www.facebook.com/profile.php?id=100063903909510" target="_blank" rel="noreferrer">Visit Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+          <details class="map-details"><summary>View location</summary><div class="map-container"><iframe title="Map showing The Barbeque Guys in Iloilo City" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.151898967764!2d122.55174997408679!3d10.722765060183155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee58540f8c16d%3A0x6af842c8e0a8397d!2sThe%20Barbeque%20Guys!5e0!3m2!1sen!2sph!4v1757931775969!5m2!1sen!2sph" loading="lazy" allowfullscreen></iframe></div></details>
+        </article>
+        <article class="project-card project-wide">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-eye-slash"></i></span><span class="project-type">Thesis · AI security</span></div>
+          <div><h3><a href="project.html?id=invisai" target="_blank" rel="noreferrer">InvisAI</a></h3><p>A thesis project exploring context-specific universal adversarial perturbations to protect images across platforms from CLIP-based generative AI.</p><a class="project-detail-link" href="project.html?id=invisai" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+          <span class="project-note">Semantic feature disruption · Cross-platform image protection</span>
+        </article>
+        <article class="project-card project-wide">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-file-circle-check"></i></span><span class="project-type">NLP · Recruitment</span></div>
+          <div><h3><a href="project.html?id=resumatch" target="_blank" rel="noreferrer">ResuMatch</a></h3><p>An NLP-based system that compares resumes with job descriptions using TF-IDF and cosine similarity.</p><a class="project-detail-link" href="project.html?id=resumatch" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+          <span class="project-note">Flask backend · Simple web frontend</span>
+        </article>
+        <article class="project-card">
+          <div class="project-top"><span class="project-icon"><i class="fa-solid fa-cash-register"></i></span><span class="project-type">Restaurant operations</span></div>
+          <h3><a href="project.html?id=black-pig-pos" target="_blank" rel="noreferrer">Black Pig POS</a></h3>
+          <p>A restaurant-focused point-of-sale concept inspired by the day-to-day needs of a samgyupsal business.</p>
+          <a class="project-detail-link" href="project.html?id=black-pig-pos" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </article>
       </div>
-    </div>
-    <h3 class="other-skills-title">Other Skills</h3>
-    <ul class="skills-list">
-      <li>Problem solving</li>
-      <li>Teamwork</li>
-      <li>Communication</li>
-      <li>Adaptability</li>
-      <li>Time management</li>
-    </ul>
-  </div>
-</section>
+    </section>
 
-<section id="achievements" class="container">
-  <h2 class="section-title">Achievements</h2>
-  <ul class="achievements-list">
-    <li>
-      <h3>Honors List</h3>
-      <p>Awarded multiple times for academic excellence in Highschool.</p>
-    </li>
-    <li>
-      <h3>Golden Pen Awards</h3>
-      <p>Competed in Golden Pen Interschool Competition.</p>
-    </li>
-    <li>
-      <h3>Open Source Contributor</h3>
-      <p>Contributed to GitHub projects focused on web development and AI.</p>
-    </li>
-    <li>
-      <h3>Certification</h3>
-      <p>Completed certifications in Cisco</p>
-    </li>
-  </ul>
-</section>
+    <section class="section skills-section" id="skills">
+      <div class="section-heading"><p class="eyebrow">04 / Skills</p><h2>Tools and strengths<br>I bring to the table.</h2></div>
+      <div class="skills-layout"><div><h3 class="column-title">Technical skills</h3><div class="skill-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Web development</span><span>Flutter</span><span>Mobile app development</span><span>Python</span><span>SQL</span><span>Database management</span><span>Canva</span><span>Graphic design</span><span>UI/UX design</span></div></div><div><h3 class="column-title">Ways of working</h3><ul class="strength-list"><li><i class="fa-solid fa-check"></i> Clear communication</li><li><i class="fa-solid fa-check"></i> Team collaboration</li><li><i class="fa-solid fa-check"></i> Problem-solving</li><li><i class="fa-solid fa-check"></i> Adaptability</li><li><i class="fa-solid fa-check"></i> Time management</li><li><i class="fa-solid fa-check"></i> Warm, professional approach</li></ul></div></div>
+    </section>
 
-     <section id="hobbies" class="container">
-  <h2 class="section-title">Hobbies</h2>
-  <ul class="hobbies-list">
-    <li>
-      <img src="Hobbies/9.png" alt="Art" class="hobby-icon">
-      <span>Art</span>
-    </li>
-    <li>
-      <img src="Hobbies/6.png" alt="Outdoor" class="hobby-icon">
-      <span>Outdoor Activities</span>
-    </li>
-    <li>
-      <img src="Hobbies/8.png" alt="Gaming" class="hobby-icon">
-      <span>Gaming</span>
-    </li>
-    <li>
-      <img src="Hobbies/5.png" alt="Reading Tech Blogs" class="hobby-icon">
-      <span>Reading Tech Blogs</span>
-    </li>
-    <li>
-      <img src="Hobbies/7.png" alt="Music" class="hobby-icon">
-      <span>Music</span>
-    </li>
-  </ul>
-</section>
-     <section id="contact">
-    <span class="section-title">Contact</span>
-    <p>
-       Feel free to contact me at <a href="mailto:chuaralphmartin0208@gmail.com">chuaralphmartin0208@gmail.com</a>
-       <a href="tel:09450930077">09450930077</a>
-    </p>
-    <p>
-        Connect on 
-        <div class="social-icons">
-  <a href="https://github.com/Ralph51207" target="_blank"><i class="fab fa-github"></i></a>
-  <a href="https://www.facebook.com/ralphmartin.chua" target="_blank"><i class="fab fa-facebook"></i></a>
-  <a href="https://www.instagram.com/tino_pie" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-    </p>
-    <form class="contact-form">
-  <input type="text" placeholder="Your Name" required>
-  <input type="email" placeholder="Your Email" required>
-  <textarea placeholder="Your Message" rows="4" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
-</section>
-   </div>
+    <section class="section beyond-section" id="beyond"><div class="beyond-copy"><p class="eyebrow">Beyond the screen</p><h2>Curious about more<br>than just code.</h2><p>When I’m not working on a project, I enjoy art, outdoor activities, gaming, music, and reading tech blogs.</p></div><div class="interest-list"><span><i class="fa-solid fa-palette"></i> Art</span><span><i class="fa-solid fa-person-hiking"></i> Outdoors</span><span><i class="fa-solid fa-gamepad"></i> Gaming</span><span><i class="fa-solid fa-book-open"></i> Tech blogs</span><span><i class="fa-solid fa-music"></i> Music</span></div></section>
 
-   <footer>&copy; 2025 Chua Ralph Martin. BS Computer Science.</footer>
-
-   <script src="script.js"></script>
+    <section class="section contact-section" id="contact"><div class="contact-panel"><div><p class="eyebrow">05 / Contact</p><h2>Have an idea<br>or opportunity?</h2><p>I’d be glad to connect and hear what you’re working on.</p><a class="button button-primary" href="mailto:chuaralphmartin0208@gmail.com">Email me <i class="fa-solid fa-arrow-right"></i></a></div><div class="contact-details"><a href="mailto:chuaralphmartin0208@gmail.com"><i class="fa-regular fa-envelope"></i> chuaralphmartin0208@gmail.com</a><a href="tel:+639450930077"><i class="fa-solid fa-phone"></i> +63 945 093 0077</a><span><i class="fa-solid fa-location-dot"></i> 6 Lopez Jaena St., Jaro, Iloilo City 5000</span><div class="social-links"><a href="https://github.com/Ralph51207" aria-label="GitHub" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a><a href="https://www.facebook.com/ralphmartin.chua" aria-label="Facebook" target="_blank" rel="noreferrer"><i class="fa-brands fa-facebook"></i></a><a href="https://www.instagram.com/tino_pie" aria-label="Instagram" target="_blank" rel="noreferrer"><i class="fa-brands fa-instagram"></i></a></div></div></div></section>
+  </main>
+  <footer><a class="brand" href="#home"><span class="brand-mark">RC</span><span>Ralph Chua</span></a><span>© <span id="year">2026</span> Ralph Martin Chua</span><a href="#home">Back to top ↑</a></footer>
+  <script src="script.js"></script>
 </body>
 </html>
