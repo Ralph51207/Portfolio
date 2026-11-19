@@ -1,6 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('motion-enabled');
 
+  const loader = document.querySelector('.site-loader');
+  if (loader) {
+    const removeLoader = () => loader.remove();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      removeLoader();
+    } else {
+      loader.addEventListener('animationend', (event) => {
+        if (event.animationName === 'loader-exit') removeLoader();
+      });
+      window.setTimeout(removeLoader, 2200);
+    }
+  }
+
+  const resumeLinks = document.querySelectorAll('a[href="resume.html"]');
+  resumeLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      event.preventDefault();
+      const ring = document.createElement('div');
+      ring.className = 'resume-transition-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      document.body.classList.add('resume-transitioning');
+      document.body.appendChild(ring);
+      ring.addEventListener('animationend', (animationEvent) => {
+        if (animationEvent.animationName === 'resume-ring-expand') window.location.href = link.href;
+      }, { once: true });
+    });
+  });
+
   const revealTargets = document.querySelectorAll(
     '.section-heading, .about-copy, .about-facts, .timeline-card, .project-card, .skills-layout, .beyond-copy, .interest-list, .contact-panel'
   );

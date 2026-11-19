@@ -3,16 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1118">
+  <meta name="theme-color" content="#050505">
   <meta name="description" content="Portfolio of Ralph Martin Chua, Computer Science student at West Visayas State University.">
   <title>Ralph Martin Chua | Computer Science Student & Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css.css">
 </head>
 <body>
+  <div class="site-loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-mark" aria-hidden="true">RC</div>
+    <p>Preparing portfolio</p>
+    <div class="loader-track" aria-hidden="true"><span></span></div>
+    <span class="loader-coordinate" aria-hidden="true">SHEET 01 / 2026</span>
+  </div>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Ralph Chua home"><span class="brand-mark">RC</span><span>Ralph Chua</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
@@ -29,10 +35,12 @@
         <h1 id="hero-title">Building useful<br><span>digital experiences.</span></h1>
         <p class="hero-summary">I’m Ralph Martin Chua, a BS Computer Science student at West Visayas State University with interests in web and mobile development, UI/UX, and graphic design.</p>
         <div class="hero-actions"><a class="button button-primary" href="#projects">Explore my work <i class="fa-solid fa-arrow-down"></i></a><a class="button button-quiet" href="resume.html">View resume <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
-        <div class="hero-meta"><span><i class="fa-solid fa-location-dot"></i> Iloilo City, Philippines</span><a href="mailto:chuaralphmartin0208@gmail.com"><i class="fa-regular fa-envelope"></i> Get in touch</a></div>
+        <div class="hero-meta"><span><i class="fa-solid fa-location-dot"></i> Iloilo City, Philippines</span><a href="#contact"><i class="fa-regular fa-envelope"></i> Get in touch</a></div>
       </div>
-      <div class="hero-visual">
-        <div class="portrait-frame"><img src="Portfolio/profilepicture.png" alt="Portrait of Ralph Martin Chua"></div>
+      <div class="hero-visual" aria-label="Blueprint portrait animation">
+        <div class="hero-orbit orbit-x" aria-hidden="true"></div><div class="hero-orbit orbit-y" aria-hidden="true"></div>
+        <div class="hero-axis axis-horizontal" aria-hidden="true"></div><div class="hero-axis axis-vertical" aria-hidden="true"></div>
+        <div class="portrait-frame"><img src="Portfolio/profilepicture.png" alt="Portrait of Ralph Martin Chua"><span class="portrait-coordinate">10°43′N / 122°34′E</span></div>
         <div class="floating-card"><span class="floating-icon"><i class="fa-solid fa-code"></i></span><span><strong>Curious by nature</strong><small>Learning through building</small></span></div>
         <span class="visual-ring ring-one"></span><span class="visual-ring ring-two"></span>
       </div>
@@ -113,7 +121,7 @@
         </article>
         <article class="project-card">
           <div class="project-top"><span class="project-icon"><i class="fa-solid fa-cash-register"></i></span><span class="project-type">Restaurant operations</span></div>
-          <h3><a href="project.html?id=black-pig-pos" target="_blank" rel="noreferrer">Black Pig POS</a></h3>
+          <h3><a href="project.html?id=black-pig-pos" target="_blank" rel="noreferrer">Black Pig Manager</a></h3>
           <p>A restaurant-focused point-of-sale concept inspired by the day-to-day needs of a samgyupsal business.</p>
           <a class="project-detail-link" href="project.html?id=black-pig-pos" target="_blank" rel="noreferrer">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </article>
@@ -127,7 +135,7 @@
 
     <section class="section beyond-section" id="beyond"><div class="beyond-copy"><p class="eyebrow">Beyond the screen</p><h2>Curious about more<br>than just code.</h2><p>When I’m not working on a project, I enjoy art, outdoor activities, gaming, music, and reading tech blogs.</p></div><div class="interest-list"><span><i class="fa-solid fa-palette"></i> Art</span><span><i class="fa-solid fa-person-hiking"></i> Outdoors</span><span><i class="fa-solid fa-gamepad"></i> Gaming</span><span><i class="fa-solid fa-book-open"></i> Tech blogs</span><span><i class="fa-solid fa-music"></i> Music</span></div></section>
 
-    <section class="section contact-section" id="contact"><div class="contact-panel"><div><p class="eyebrow">05 / Contact</p><h2>Have an idea<br>or opportunity?</h2><p>I’d be glad to connect and hear what you’re working on.</p><a class="button button-primary" href="mailto:chuaralphmartin0208@gmail.com">Email me <i class="fa-solid fa-arrow-right"></i></a></div><div class="contact-details"><a href="mailto:chuaralphmartin0208@gmail.com"><i class="fa-regular fa-envelope"></i> chuaralphmartin0208@gmail.com</a><a href="tel:+639450930077"><i class="fa-solid fa-phone"></i> +63 945 093 0077</a><span><i class="fa-solid fa-location-dot"></i> 6 Lopez Jaena St., Jaro, Iloilo City 5000</span><div class="social-links"><a href="https://github.com/Ralph51207" aria-label="GitHub" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a><a href="https://www.facebook.com/ralphmartin.chua" aria-label="Facebook" target="_blank" rel="noreferrer"><i class="fa-brands fa-facebook"></i></a><a href="https://www.instagram.com/tino_pie" aria-label="Instagram" target="_blank" rel="noreferrer"><i class="fa-brands fa-instagram"></i></a></div></div></div></section>
+    <section class="section contact-section" id="contact"><div class="contact-panel"><div><p class="eyebrow">05 / Contact</p><h2>Have an idea<br>or opportunity?</h2><p>I’d be glad to connect and hear what you’re working on.</p><a class="button button-primary" href="mailto:chuaralphmartin0208@gmail.com">Email me <i class="fa-solid fa-arrow-right"></i></a></div><div class="contact-details"><a href="mailto:chuaralphmartin0208@gmail.com"><i class="fa-regular fa-envelope"></i> chuaralphmartin0208@gmail.com</a><a href="tel:+639450930077"><i class="fa-solid fa-phone"></i> +63 945 093 0077</a><span><i class="fa-solid fa-location-dot"></i> 6 Lopez Jaena St., Jaro, Iloilo City 5000</span><div class="social-links"><a href="https://github.com/Ralph51207" aria-label="GitHub" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a><a href="https://www.facebook.com/ralphmartin.chua" aria-label="Facebook" target="_blank" rel="noreferrer"><i class="fa-brands fa-facebook"></i></a><a href="https://www.instagram.com/tino_pie" aria-label="Instagram" target="_blank" rel="noreferrer"><i class="fa-brands fa-instagram"></i></a><a href="https://linkedin.com/in/ralph-martin-chua-b497473a8" aria-label="LinkedIn" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin-in"></i></a></div></div></div></section>
   </main>
   <footer><a class="brand" href="#home"><span class="brand-mark">RC</span><span>Ralph Chua</span></a><span>© <span id="year">2026</span> Ralph Martin Chua</span><a href="#home">Back to top ↑</a></footer>
   <script src="script.js"></script>

@@ -1,12 +1,12 @@
 :root {
   color-scheme: dark;
-  --bg: #0b1118;
-  --panel: #101923;
-  --panel-2: #14202a;
-  --line: rgba(183,204,222,.13);
-  --text: #edf3f6;
-  --muted: #a1b0ba;
-  --accent: #8bd3c7;
+  --bg: #050505;
+  --panel: #101010;
+  --panel-2: #181818;
+  --line: rgba(190,190,190,.2);
+  --text: #f1f1f1;
+  --muted: #a5a5a5;
+  --accent: #f2f2f2;
   --font-body: 'DM Sans',sans-serif;
   --font-display: 'Manrope',sans-serif;
 }
@@ -15,10 +15,20 @@
 }
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   font: 16px/1.7 var(--font-body);
   -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E"),linear-gradient(rgba(216,216,216,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(216,216,216,.035) 1px,transparent 1px),linear-gradient(rgba(216,216,216,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(216,216,216,.07) 1px,transparent 1px),radial-gradient(ellipse 44rem 34rem at 80% 8%,rgba(132,132,132,.1),transparent 75%);
+  background-size: 160px 160px,32px 32px,32px 32px,160px 160px,160px 160px,auto;
+  mask-image: linear-gradient(to bottom,rgba(0,0,0,.8),rgba(0,0,0,.74) 100%);
 }
 a {
   color: inherit;
@@ -34,8 +44,20 @@ a {
   top: 0;
   z-index: 5;
   border-bottom: 1px solid var(--line);
-  background: rgba(11,17,24,.9);
+  background: rgba(14,14,14,.92);
   backdrop-filter: blur(14px);
+  animation: resume-arrive .55s cubic-bezier(.2,.75,.25,1) both;
+}
+.resume-header::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  pointer-events: none;
+  opacity: .62;
+  background: repeating-linear-gradient(90deg,rgba(216,216,216,.44) 0 1px,transparent 1px 16px,rgba(216,216,216,.18) 16px 17px,transparent 17px 32px);
 }
 .back-link {
   color: var(--muted);
@@ -54,14 +76,14 @@ a {
   justify-content: center;
   gap: 11px;
   padding: 9px 15px;
-  border-radius: 7px;
+  border-radius: 2px;
   background: var(--accent);
-  color: #0b1717;
+  color: #090909;
   font-size: .82rem;
   font-weight: 700;
 }
 .download-btn:hover {
-  background: #b0eadb;
+  background: #ffffff;
 }
 .resume-layout {
   width: min(1180px,100%);
@@ -69,8 +91,8 @@ a {
   display: grid;
   grid-template-columns: 345px minmax(0,1fr);
   min-height: calc(100vh - 72px);
-  border-left: 1px solid rgba(183,204,222,.06);
-  border-right: 1px solid rgba(183,204,222,.06);
+  border-left: 1px solid rgba(217,217,217,.06);
+  border-right: 1px solid rgba(217,217,217,.06);
 }
 .resume-sidebar {
   position: sticky;
@@ -79,8 +101,11 @@ a {
   max-height: calc(100vh - 72px);
   overflow: auto;
   padding: 42px 30px 35px;
-  background: #0e1720;
+  background-color: #181818;
+  background-image: linear-gradient(rgba(216,216,216,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(216,216,216,.04) 1px,transparent 1px);
+  background-size: 24px 24px;
   border-right: 1px solid var(--line);
+  animation: resume-arrive .7s .06s cubic-bezier(.2,.75,.25,1) both;
 }
 .monogram {
   width: 54px;
@@ -88,8 +113,8 @@ a {
   display: grid;
   place-items: center;
   margin-bottom: 23px;
-  border: 1px solid rgba(139,211,199,.4);
-  border-radius: 14px;
+  border: 1px solid rgba(198,198,198,.4);
+  border-radius: 2px;
   color: var(--accent);
   font-family: var(--font-display);
   font-size: .9rem;
@@ -103,6 +128,7 @@ a {
   letter-spacing: .16em;
   text-transform: uppercase;
   font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .resume-sidebar h1 {
   font: 700 1.8rem/1.14 var(--font-display);
@@ -121,7 +147,7 @@ a {
 }
 .resume-sidebar h2 {
   margin: 0 0 12px;
-  color: #e4ebef;
+  color: #e7e7e7;
   font-size: .72rem;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -143,12 +169,12 @@ a {
   margin: 0;
   display: grid;
   gap: 10px;
-  color: #d4dfe4;
+  color: #dcdcdc;
   font-size: .79rem;
 }
 .sidebar-skills li {
   padding-left: 12px;
-  border-left: 1px solid rgba(139,211,199,.42);
+  border-left: 1px solid rgba(198,198,198,.42);
 }
 .sidebar-skills small {
   color: var(--muted);
@@ -163,7 +189,7 @@ a {
   padding: 5px 8px;
   border: 1px solid var(--line);
   border-radius: 5px;
-  color: #c2cfd5;
+  color: #c9c9c9;
   font-size: .68rem;
 }
 .sidebar-pdf-link {
@@ -177,6 +203,12 @@ a {
 }
 .resume-content {
   padding: 65px clamp(28px,5.5vw,74px) 30px;
+  background: rgba(16,16,16,.92);
+  animation: resume-arrive .8s .1s cubic-bezier(.2,.75,.25,1) both;
+}
+@keyframes resume-arrive {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .resume-section {
   padding-bottom: 32px;
@@ -187,17 +219,19 @@ a {
   font: 600 clamp(1.7rem,3vw,2.35rem)/1.2 var(--font-display);
   letter-spacing: -.055em;
   margin: 0 0 21px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent);
 }
 .career>p:last-child {
   max-width: 680px;
-  color: #bcc8cf;
+  color: #c2c2c2;
   font-size: .94rem;
   margin: 0;
 }
 .resume-entry {
   padding: 0 0 22px;
   margin-bottom: 21px;
-  border-bottom: 1px solid rgba(183,204,222,.08);
+  border-bottom: 1px dashed rgba(217,217,217,.2);
 }
 .resume-entry:last-child {
   padding-bottom: 0;
@@ -212,9 +246,15 @@ a {
 }
 .entry-heading h3 {
   margin: 0;
-  color: #f1f5f6;
+  color: #f1f1f1;
   font: 600 1.08rem/1.4 var(--font-display);
   letter-spacing: -.03em;
+}
+.entry-heading h3::before {
+  content: '□';
+  margin-right: 8px;
+  color: var(--accent);
+  font: 500 .78rem 'IBM Plex Mono', monospace;
 }
 .entry-heading p {
   margin: 3px 0 0;
@@ -227,11 +267,12 @@ a {
   color: var(--muted);
   font-size: .75rem;
   text-align: right;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .resume-entry ul {
   padding-left: 18px;
   margin: 12px 0 0;
-  color: #adbcc5;
+  color: #b5b5b5;
   font-size: .83rem;
 }
 .resume-entry li+li {
@@ -244,8 +285,8 @@ a {
   gap: 20px;
   padding: 21px 22px;
   border: 1px solid var(--line);
-  border-radius: 9px;
-  background: rgba(20,32,42,.7);
+  border-radius: 2px;
+  background: rgba(23,23,23,.92);
 }
 .pdf-preview h2 {
   font-size: 1.23rem;
@@ -353,5 +394,12 @@ a {
   }
   .resume-content footer {
     flex-direction: column;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .resume-header,
+  .resume-sidebar,
+  .resume-content {
+    animation: none;
   }
 }

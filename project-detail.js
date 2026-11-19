@@ -69,7 +69,7 @@ const projects = {
     icon: '▤'
   },
   'black-pig-pos': {
-    title: 'Black Pig POS',
+    title: 'Black Pig Manager',
     category: 'Restaurant operations',
     description: 'A restaurant-focused point-of-sale concept inspired by the day-to-day needs of a samgyupsal business.',
     details: ['Restaurant-focused point-of-sale concept'],
