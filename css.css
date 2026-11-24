@@ -38,8 +38,8 @@ body.resume-transitioning { overflow: hidden; }
 .resume-transition-ring::before {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: var(--transition-x, 50%);
+  top: var(--transition-y, 50%);
   width: 54px;
   aspect-ratio: 1;
   border: 2px solid rgba(255,255,255,.94);
@@ -68,6 +68,25 @@ body.resume-transitioning { overflow: hidden; }
   background-image: linear-gradient(rgba(210,210,210,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(210,210,210,.055) 1px,transparent 1px);
   background-size: 32px 32px;
   animation: loader-exit .8s 1s cubic-bezier(.7,0,.2,1) forwards;
+}
+#oneko {
+  position: fixed;
+  z-index: 2147483647;
+  width: 32px;
+  height: 32px;
+  background-image: url("https://raw.githubusercontent.com/adryd325/oneko.js/14bab15a755d0e35cd4ae19c931d96d306f99f42/oneko.gif");
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  appearance: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+#oneko:focus-visible { outline: 1px solid #fff; outline-offset: 3px; }
+@media (hover: none), (pointer: coarse) {
+  #oneko { display: none; }
 }
 .loader-mark {
   display: grid;
@@ -344,6 +363,70 @@ p {
   perspective: 1100px;
   isolation: isolate;
 }
+.vercel-triangle {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  width: min(260px, 70%);
+  overflow: visible;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  opacity: .82;
+  filter: drop-shadow(0 0 9px rgba(255,255,255,.42)) drop-shadow(0 0 27px rgba(255,255,255,.18));
+  animation: triangle-float 7s ease-in-out infinite, triangle-glow 4.8s ease-in-out infinite alternate;
+}
+.vercel-triangle path {
+  fill: #050505;
+  stroke: rgba(255,255,255,.82);
+  stroke-width: 1.35;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.portrait-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(350px,72%);
+  aspect-ratio: 4/4.7;
+  isolation: isolate;
+  transform: perspective(900px) rotateX(var(--drag-rotate-x, 0deg)) rotateY(var(--drag-rotate-y, 0deg));
+  transform-style: preserve-3d;
+  transition: transform .72s cubic-bezier(.16,1,.3,1);
+  cursor: grab;
+  user-select: none;
+}
+.portrait-wrap.is-dragging {
+  cursor: grabbing;
+  transition: transform .11s cubic-bezier(.2,.75,.25,1);
+}
+.portrait-wrap::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: -38px;
+  border-radius: 48% 52% 61% 39% / 42% 46% 54% 58%;
+  opacity: .78;
+  background: radial-gradient(circle 170px at var(--glow-x,50%) var(--glow-y,50%), rgba(255,255,255,.92), rgba(255,255,255,.52) 34%, rgba(255,255,255,.2) 58%, transparent 76%);
+  filter: blur(23px);
+  animation: liquid-glow 7s ease-in-out infinite alternate;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.portrait-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: -24%;
+  border-radius: 58% 42% 45% 55% / 55% 38% 62% 45%;
+  opacity: .72;
+  background: radial-gradient(ellipse at 50% 48%, rgba(255,255,255,.32), rgba(255,255,255,.13) 42%, transparent 70%);
+  filter: blur(28px);
+  animation: liquid-drift 10s ease-in-out infinite alternate;
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+.portrait-wrap.is-hovered::before { opacity: 1; filter: blur(19px) brightness(1.35); }
+.portrait-wrap.is-hovered::after { opacity: 1; }
 .hero-visual::before {
   content: '';
   position: absolute;
@@ -355,8 +438,8 @@ p {
 .portrait-frame {
   position: relative;
   z-index: 1;
-  width: min(350px,72%);
-  aspect-ratio: 4/4.7;
+  width: 100%;
+  height: 100%;
   border-radius: 2px;
   overflow: hidden;
   transform-style: preserve-3d;
@@ -532,9 +615,9 @@ p {
   top: 24%;
   width: clamp(110px,16vw,250px);
   aspect-ratio: 1;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' fill='none' stroke='%23c8c8c8' stroke-width='.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M70 14 123 42 70 72 17 42Z M17 42v57l53 28 53-28V42 M70 72v55 M17 42 70 72l53-30'/%3E%3C/svg%3E") center / contain no-repeat;
-  opacity: .2;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,.08));
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpath d='M70 8 132 124H8Z' fill='%23050505' stroke='%23dedede' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 1;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,.16)) drop-shadow(0 0 22px rgba(255,255,255,.07));
   pointer-events: none;
   --shape-rotation: 0deg;
   --shape-scale: 1;
@@ -550,32 +633,30 @@ p {
 #skills::before,
 #contact::before { right: clamp(8px,2vw,26px); }
 #experience::before {
-  --shape-rotation: 14deg;
+  --shape-rotation: 18deg;
   --shape-tilt-y: 13deg;
-  --shape-scale: .82;
+  --shape-scale: .78;
   animation-delay: -2.4s;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' fill='none' stroke='%23c8c8c8' stroke-width='.65' stroke-linecap='round'%3E%3Cpath d='M28 34C28 18 112 18 112 34S28 50 28 34Zm0 0v68c0 16 84 16 84 0V34M28 102c0-16 84-16 84 0'/%3E%3C/svg%3E");
 }
 #projects::before {
-  --shape-rotation: -12deg;
+  --shape-rotation: -21deg;
   --shape-scale: .72;
   --shape-tilt-x: -10deg;
   animation-delay: -4.1s;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' fill='none' stroke='%23c8c8c8' stroke-width='.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M70 14 120 48 70 79 20 48ZM20 48l22 65 56 0 22-65M70 79l-28 34m28-34 28 34M70 14 42 113m28-99 28 99'/%3E%3C/svg%3E");
 }
 #skills::before {
+  --shape-rotation: 11deg;
   --shape-tilt-y: 16deg;
   --shape-scale: .68;
   animation-delay: -1.3s;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' fill='none' stroke='%23c8c8c8' stroke-width='.65' stroke-linecap='round'%3E%3Cpath d='M28 34C28 18 112 18 112 34S28 50 28 34Zm0 0v68c0 16 84 16 84 0V34M28 102c0-16 84-16 84 0'/%3E%3C/svg%3E");
 }
-#beyond::before { --shape-scale: 1.08; animation-delay: -5.2s; }
+#about::before { --shape-rotation: -9deg; --shape-tilt-y: -15deg; --shape-scale: .96; animation-delay: -3.5s; }
+#beyond::before { --shape-rotation: 24deg; --shape-tilt-x: -14deg; --shape-tilt-y: 8deg; --shape-scale: 1.08; animation-delay: -5.2s; }
 #contact::before {
-  --shape-rotation: 9deg;
+  --shape-rotation: -15deg;
   --shape-tilt-x: -12deg;
   --shape-scale: .9;
   animation-delay: -3.3s;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140' fill='none' stroke='%23c8c8c8' stroke-width='.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M70 14 120 48 70 79 20 48ZM20 48l22 65 56 0 22-65M70 79l-28 34m28-34 28 34M70 14 42 113m28-99 28 99'/%3E%3C/svg%3E");
 }
 @keyframes shape-float {
   0%, 100% { transform: perspective(600px) translateY(0) rotateX(var(--shape-tilt-x)) rotateY(var(--shape-tilt-y)) rotateZ(var(--shape-rotation)) scale(var(--shape-scale)); }
@@ -1353,6 +1434,27 @@ footer>a:last-child:hover {
   to { transform: scale(1.03) rotate(4deg); opacity: 1; }
 }
 
+@keyframes triangle-glow {
+  from { opacity: .62; filter: drop-shadow(0 0 6px rgba(255,255,255,.28)) drop-shadow(0 0 18px rgba(255,255,255,.12)); }
+  to { opacity: .96; filter: drop-shadow(0 0 12px rgba(255,255,255,.58)) drop-shadow(0 0 34px rgba(255,255,255,.24)); }
+}
+
+@keyframes triangle-float {
+  0%, 100% { transform: translate(-50%, -100%) translateY(0); }
+  50% { transform: translate(-50%, -100%) translateY(-9px); }
+}
+
+@keyframes liquid-glow {
+  0% { transform: translate(-4%, 2%) scale(.96) rotate(-8deg); border-radius: 48% 52% 61% 39% / 42% 46% 54% 58%; }
+  50% { transform: translate(3%, -3%) scale(1.05) rotate(5deg); border-radius: 61% 39% 45% 55% / 54% 58% 42% 46%; }
+  100% { transform: translate(-1%, 4%) scale(1.02) rotate(12deg); border-radius: 40% 60% 54% 46% / 49% 38% 62% 51%; }
+}
+
+@keyframes liquid-drift {
+  from { transform: translate(-4%, 3%) rotate(-10deg) scale(.98); }
+  to { transform: translate(4%, -3%) rotate(9deg) scale(1.06); }
+}
+
 html.motion-enabled .reveal-on-scroll {
   opacity: 0;
   transform: translateY(22px);
@@ -1414,8 +1516,11 @@ html.motion-enabled .reveal-on-scroll.in-view {
   }
 
   .portrait-frame,
+  .portrait-wrap::before,
+  .portrait-wrap::after,
   .portrait-frame img,
-  .hero-orbit {
+  .hero-orbit,
+  .vercel-triangle {
     animation: none;
   }
 
